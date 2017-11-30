@@ -1,3 +1,10 @@
+unexport EPICS_MODULE_TAG
+unexport EPICS_MODULE_SRC_PATH
+unexport PROJECT
+unexport LIBVERSION
+unexport E3_ENV_NAME
+unexport USR_DEPENDENCIES
+
 EPICS_MODULE_NAME:=stream
 # This is the module source tag
 # *) individual tags
@@ -13,5 +20,5 @@ export LIBVERSION:=2.7.7
 export E3_ENV_NAME:=e3-env
 USR_DEPENDENCIES += asyn,4.32.0
 USR_DEPENDENCIES += sscan,2.10.2
-USR_DEPENDENCIES += calc,0.0.0
+USR_DEPENDENCIES += calc,3.6.2-rc0
 export USR_DEPENDENCIES
