@@ -159,16 +159,19 @@ conf:
 	$(QUIET) install -m 644 $(TOP)/$(ESS_MODULE_MAKEFILE)  $(EPICS_MODULE_SRC_PATH)/
 
 
-epics:
+#epics:
 #	$(QUIET)echo "ASYN=$(M_ASYN)"                       > $(TOP)/$(EPICS_MODULE_SRC_PATH)/configure/RELEASE
-	$(QUIET)echo "EPICS_BASE=$(COMMUNITY_EPICS_BASE)"  >> $(TOP)/$(EPICS_MODULE_SRC_PATH)/configure/RELEASE
-#	$(QUIET)echo "INSTALL_LOCATION=$(M_MODBUS)"         > $(TOP)/$(EPICS_MODULE_SRC_PATH)/configure/CONFIG_SITE	
-	sudo -E bash -c "$(MAKE) -C $(EPICS_MODULE_SRC_PATH)"
+#	$(QUIET)echo "SSCAN=$(M_SSCAN)"                    >> $(TOP)/$(EPICS_MODULE_SRC_PATH)/configure/RELEASE
+#	$(QUIET)echo "CALC=$(M_CALC)"                      >> $(TOP)/$(EPICS_MODULE_SRC_PATH)/configure/RELEASE
+#	$(QUIET)echo "EPICS_BASE=$(COMMUNITY_EPICS_BASE)"  >> $(TOP)/$(EPICS_MODULE_SRC_PATH)/configure/RELEASE
+#	$(QUIET)echo "INSTALL_LOCATION=$(M_STREAM)"         > $(TOP)/$(EPICS_MODULE_SRC_PATH)/configure/CONFIG_SITE	
+#	sudo -E bash -c "$(MAKE) -C $(EPICS_MODULE_SRC_PATH)"
 
-epics-clean:
-	sudo -E bash -c "$(MAKE) -C $(EPICS_MODULE_SRC_PATH) clean"
+#epics-clean:
+#	sudo -E bash -c "$(MAKE) -C $(EPICS_MODULE_SRC_PATH) clean"
 
-.PHONY: env $(E3_ENV_NAME) $(EPICS_MODULE_SRC_PATH) git-submodule-sync init help help2 build clean install uninstall conf rebuild epics epics-clean
+.PHONY: env $(E3_ENV_NAME) $(EPICS_MODULE_SRC_PATH) git-submodule-sync init help help2 build clean install uninstall conf rebuild
+#.PHONY: epics epics-clean
 
 
 
