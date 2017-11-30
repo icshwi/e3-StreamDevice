@@ -32,11 +32,53 @@ RECORDTYPES += stringout stringin
 RECORDTYPES += waveform
 RECORDTYPES += calcout
 
-SOURCES += $(RECORDTYPES:%=$(APPSRC)/dev%Stream.c)
-SOURCES += $(FORMATS:%=$(APPSRC)/%Converter.cc)
-SOURCES += $(BUSSES:%=$(APPSRC)/%Interface.cc)
-SOURCES += $(wildcard $(APPSRC)/Stream*.cc)
-SOURCES += $(APPSRC)/StreamVersion.c
+
+
+SOURCES +=$(APPSRC)/TimestampConverter.cc
+
+SOURCES +=$(APPSRC)/StreamBuffer.cc
+SOURCES +=$(APPSRC)/StreamBusInterface.cc
+SOURCES +=$(APPSRC)/StreamCore.cc
+SOURCES +=$(APPSRC)/StreamEpics.cc
+SOURCES +=$(APPSRC)/StreamError.cc
+SOURCES +=$(APPSRC)/StreamFormatConverter.cc
+SOURCES +=$(APPSRC)/StreamProtocol.cc
+SOURCES +=$(APPSRC)/StreamVersion.c
+
+SOURCES +=$(APPSRC)/RegexpConverter.cc
+SOURCES +=$(APPSRC)/RawFloatConverter.cc
+SOURCES +=$(APPSRC)/RawConverter.cc
+SOURCES +=$(APPSRC)/MantissaExponentConverter.cc
+SOURCES +=$(APPSRC)/EnumConverter.cc
+
+SOURCES +=$(APPSRC)/DummyInterface.cc
+SOURCES +=$(APPSRC)/DebugInterface.cc
+
+SOURCES +=$(APPSRC)/devaaiStream.c
+SOURCES +=$(APPSRC)/devaaoStream.c
+SOURCES +=$(APPSRC)/devaiStream.c
+SOURCES +=$(APPSRC)/devaoStream.c
+SOURCES +=$(APPSRC)/devbiStream.c
+SOURCES +=$(APPSRC)/devboStream.c
+SOURCES +=$(APPSRC)/devcalcoutStream.c
+SOURCES +=$(APPSRC)/devlonginStream.c
+SOURCES +=$(APPSRC)/devlongoutStream.c
+SOURCES +=$(APPSRC)/devmbbiDirectStream.c
+SOURCES +=$(APPSRC)/devmbbiStream.c
+SOURCES +=$(APPSRC)/devmbboDirectStream.c
+SOURCES +=$(APPSRC)/devmbboStream.c
+SOURCES +=$(APPSRC)/devstringinStream.c
+SOURCES +=$(APPSRC)/devstringoutStream.c
+SOURCES +=$(APPSRC)/devwaveformStream.c
+
+SOURCES +=$(APPSRC)/ChecksumConverter.cc
+SOURCES +=$(APPSRC)/BinaryConverter.cc
+SOURCES +=$(APPSRC)/BCDConverter.cc
+SOURCES +=$(APPSRC)/AsynDriverInterface.cc
+SOURCES +=$(APPSRC)/devmbboDirectStream.c
+
+#SOURCES += $(APPSRC)/srcSynApps/devscalcoutStream.c
+
 
 HEADERS += $(APPSRC)/devStream.h
 HEADERS += $(APPSRC)/StreamFormat.h
