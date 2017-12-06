@@ -33,7 +33,7 @@ APPDB:=$(APP)/Db
 APPSRC:=$(APP)/src
 
 # pcre-config --libs-cpp
-USR_LDFLAGS += -lpcrecpp -lpcre
+#USR_LDFLAGS += -lpcrecpp -lpcre
 
 
 BUSSES  += AsynDriver
@@ -71,6 +71,9 @@ HEADERS += $(APPSRC)/StreamFormat.h
 HEADERS += $(APPSRC)/StreamFormatConverter.h
 HEADERS += $(APPSRC)/StreamBuffer.h
 HEADERS += $(APPSRC)/StreamError.h
+
+USR_LIBS += pcre
+USR_LIBS += pcrecpp
 
 
 StreamCore$(DEP): streamReferences
