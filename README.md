@@ -1,12 +1,8 @@
 # e3-StreamDevice
 
-PSI StreamDevice, not epics-module.
 
+The PSI StreamDevice, not epics-module/stream.
 
-* 
-```
-USR_DEPENDENCIES += calc,4aab3c
-```
-driver.makefile cannot find calc !
+* e3-pcre should be installed 
+* https://github.com/paulscherrerinstitute/StreamDevice
 
-And dep file ignores, calc and sscan...
