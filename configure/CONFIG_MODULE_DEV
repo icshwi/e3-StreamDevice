@@ -23,7 +23,7 @@ E3_MODULE_SRC_PATH:=$(EPICS_MODULE_NAME)-dev
 E3_MODULE_MAKEFILE:=$(EPICS_MODULE_NAME).Makefile
 
 #export DEV_GIT_URL:="https://where your git repo"
-E3_MODULE_DEV_GITURL:="https://github.com/epics-modules/StreamDevice"
+E3_MODULE_DEV_GITURL:="https://github.com/icshwi/StreamDevice"
 
 
 
