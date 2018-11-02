@@ -19,17 +19,15 @@
 #-
 #- ####################################################
 
-epicsEnvSet(SERIAL_PORTNAME,  "$(PORT_NAME)")
-epicsEnvSet(SERIAL_TTYNAME,   "$(TTY_NAME)")
 
-drvAsynSerialPortConfigure($(SERIAL_PORTNAME),$(SERIAL_TTYNAME),0,0,0)
+drvAsynSerialPortConfigure($(PORT_NAME),$(TTY_NAME),0,0,0)
 
-asynSetOption($(SERIAL_PORTNAME), -1, "baud",    "$(BAUD=9600)")
-asynSetOption($(SERIAL_PORTNAME), -1, "bits",    "$(BITS=8)")
-asynSetOption($(SERIAL_PORTNAME), -1, "stop",    "$(STOP=1)")
-asynSetOption($(SERIAL_PORTNAME), -1, "parity",  "$(PARITY=none)")
-asynSetOption($(SERIAL_PORTNAME), -1, "clocal",  "$(CLOCAL=Y)")
-asynSetOption($(SERIAL_PORTNAME), -1, "crtscts", "$(SRTSCTS=N)")
+asynSetOption($(PORT_NAME), 0, "baud",    "$(BAUD=9600)")
+asynSetOption($(PORT_NAME), 0, "bits",    "$(BITS=8)")
+asynSetOption($(PORT_NAME), 0, "stop",    "$(STOP=1)")
+asynSetOption($(PORT_NAME), 0, "parity",  "$(PARITY=none)")
+asynSetOption($(PORT_NAME), 0, "clocal",  "$(CLOCAL=Y)")
+asynSetOption($(PORT_NAME), 0, "crtscts", "$(SRTSCTS=N)")
 
 
 
