@@ -1,0 +1,36 @@
+#- #############################$######################
+#- ###         SetSerialPort iocsh                  ###
+#- ####################################################
+#- >> Mandatory
+#- PORT_NAME      - Serial Port Name
+#- TTY_NAME       - Serial TTY name
+#-
+#- >> Optional
+#- BAUD           - Baud Rate, Default=9600
+#- BITS           - Bit, Default=8  (8/7/6/5)
+#- STOP           - Stop, Default=1  (1/2)
+#- PARITY         - Parity, Default=nono (none/even/odd)
+#- CLOCAL         - Data Terminal Ready,Carrier Detect/Received Line Signal Detect, Default=Y
+#-                  Y : Ignored
+#-                  N : Used
+#- SRTSCTS        - hardware handshaking lines, Request To Send, Clear To Send, Default=N
+#-                  Y : Used
+#-                  N : Ignored
+#-
+#- ####################################################
+
+epicsEnvSet(SERIAL_PORTNAME,  "$(PORT_NAME)")
+epicsEnvSet(SERIAL_TTYNAME,   "$(TTY_NAME)")
+
+drvAsynSerialPortConfigure($(SERIAL_PORTNAME),$(SERIAL_TTYNAME),0,0,0)
+
+asynSetOption($(SERIAL_PORTNAME), -1, "baud",    "$(BAUD=9600)")
+asynSetOption($(SERIAL_PORTNAME), -1, "bits",    "$(BITS=8)")
+asynSetOption($(SERIAL_PORTNAME), -1, "stop",    "$(STOP=1)")
+asynSetOption($(SERIAL_PORTNAME), -1, "parity",  "$(PARITY=none)")
+asynSetOption($(SERIAL_PORTNAME), -1, "clocal",  "$(CLOCAL=Y)")
+asynSetOption($(SERIAL_PORTNAME), -1, "crtscts", "$(SRTSCTS=N)")
+
+
+
+

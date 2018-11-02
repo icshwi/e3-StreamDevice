@@ -43,7 +43,7 @@ endif
 USR_CPPFLAGS += -DUSE_TYPED_RSET
 
 
-APP:=
+APP:=.
 APPDB:=$(APP)/Db
 APPSRC:=$(APP)/src
 
@@ -89,6 +89,9 @@ HEADERS += $(APPSRC)/StreamError.h
 
 # USR_LIBS += pcre
 # USR_LIBS += pcrecpp
+
+SCRIPTS += $(wildcard ../iocsh/*.iocsh)
+
 
 
 StreamCore$(DEP): streamReferences
