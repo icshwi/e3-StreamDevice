@@ -35,6 +35,10 @@ ifneq ($(strip $(ASYN_DEP_VERSION)),)
 asyn_VERSION=$(ASYN_DEP_VERSION)
 endif
 
+ifneq ($(strip $(CALC_DEP_VERSION)),)
+calc_VERSION=$(CALC_DEP_VERSION)
+endif
+
 ifneq ($(strip $(PCRE_DEP_VERSION)),)
 pcre_VERSION=$(PCRE_DEP_VERSION)
 endif
@@ -72,7 +76,7 @@ RECORDTYPES += mbboDirect mbbiDirect
 RECORDTYPES += longout longin
 RECORDTYPES += stringout stringin
 RECORDTYPES += waveform
-RECORDTYPES += calcout
+RECORDTYPES += calcout scalcout
 RECORDTYPES += aai aao
 
 SOURCES += $(RECORDTYPES:%=src/dev%Stream.c)
