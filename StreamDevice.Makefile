@@ -1,6 +1,7 @@
 #
-#  Copyright (c) 2007 - 2017     Paul Scherrer Institute 
+#  Copyright (c) 2007            Paul Scherrer Institute 
 #  Copyright (c) 2017 - Present  European Spallation Source ERIC
+#  Copyright (c) 2019            Jeong Han Lee
 #
 #  The program is free software: you can redistribute
 #  it and/or modify it under the terms of the GNU General Public License
@@ -19,14 +20,13 @@
 #
 #  ESS specific author  : Jeong Han Lee
 #               email   : han.lee@esss.se
-#               date    : Monday, September 10 11:18:59 CEST 2018
-#               version : 0.0.2
+#               date    : Thursday, March  7 22:27:55 CET 2019
+#               version : 0.0.3
 #
 #   
 
 
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
-
 include $(E3_REQUIRE_TOOLS)/driver.makefile
 include $(E3_REQUIRE_CONFIG)/DECOUPLE_FLAGS
 
@@ -39,32 +39,20 @@ ifneq ($(strip $(PCRE_DEP_VERSION)),)
 pcre_VERSION=$(PCRE_DEP_VERSION)
 endif
 
+ifneq ($(strip $(CALC_DEP_VERSION)),)
+calc_VERSION=$(CALC_DEP_VERSION)
+endif
 
-USR_CPPFLAGS += -DUSE_TYPED_RSET
+
+
+#USR_CPPFLAGS += -DUSE_TYPED_RSET
 
 
 APP:=.
 APPDB:=$(APP)/Db
 APPSRC:=$(APP)/src
 
-# pcre-config --libs-cpp
-#USR_LDFLAGS += -lpcrecpp -lpcre
-
-
-BUSSES  += AsynDriver
-BUSSES  += Dummy
-
-FORMATS += Enum
-FORMATS += BCD
-FORMATS += Raw
-FORMATS += RawFloat
-FORMATS += Binary
-FORMATS += Checksum
-FORMATS += Regexp
-FORMATS += MantissaExponent
-FORMATS += Timestamp
-
-
+### CONFIG_STREAM START
 RECORDTYPES += ao ai
 RECORDTYPES += bo bi
 RECORDTYPES += mbbo mbbi
@@ -75,23 +63,50 @@ RECORDTYPES += waveform
 RECORDTYPES += calcout
 RECORDTYPES += aai aao
 
+ifdef BASE_3_15
+RECORDTYPES += lsi lso
+endif
+ifdef BASE_3_16
+RECORDTYPES += int64in int64out
+endif
+
+RECORDTYPES += scalcout
+
+BUSSES  += Debug
+BUSSES  += Dummy
+BUSSES  += AsynDriver
+
+FORMATS += Enum
+FORMATS += BCD
+FORMATS += Raw
+FORMATS += RawFloat
+FORMATS += Binary
+FORMATS += Checksum
+FORMATS += MantissaExponent
+FORMATS += Timestamp
+FORMATS += Regexp
+
+### CONFIG_STREAM END
+
+
+### GNUmakefile
 SOURCES += $(RECORDTYPES:%=src/dev%Stream.c)
 SOURCES += $(FORMATS:%=src/%Converter.cc)
 SOURCES += $(BUSSES:%=src/%Interface.cc)
 SOURCES += $(wildcard src/Stream*.cc)
+
+## E3 Specific
 SOURCES += $(APPSRC)/StreamVersion.c
 
+### GNUmakefile
 HEADERS += $(APPSRC)/devStream.h
 HEADERS += $(APPSRC)/StreamFormat.h
 HEADERS += $(APPSRC)/StreamFormatConverter.h
 HEADERS += $(APPSRC)/StreamBuffer.h
 HEADERS += $(APPSRC)/StreamError.h
 
-# USR_LIBS += pcre
-# USR_LIBS += pcrecpp
 
 SCRIPTS += $(wildcard ../iocsh/*.iocsh)
-
 
 
 StreamCore$(DEP): streamReferences
@@ -106,7 +121,6 @@ streamReferences:
 
 export DBDFILES = streamSup.dbd
 
-
 streamSup.dbd:
 	@echo Creating $@
 	$(PERL) $(where_am_I)$(APPSRC)/makedbd.pl $(RECORDTYPES) > $@
@@ -117,6 +131,7 @@ streamSup.dbd:
 
 db:
 #
-.PHONY: vlibs
+.PHONY: vlibs db
+
 vlibs:
 #
