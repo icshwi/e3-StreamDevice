@@ -1,4 +1,4 @@
 [submodule "StreamDevice"]
 	path = StreamDevice
 	url = https://github.com/paulscherrerinstitute/StreamDevice
-	ignore = dirty
+	ignore = all
