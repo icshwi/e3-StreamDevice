@@ -20,8 +20,8 @@
 #
 #  ESS specific author  : Jeong Han Lee
 #               email   : han.lee@esss.se
-#               date    : Thursday, March  7 22:27:55 CET 2019
-#               version : 0.0.3
+#               date    : Thursday, August  1 18:48:35 CEST 2019
+#               version : 0.0.4
 #
 #   
 
@@ -95,10 +95,14 @@ SOURCES += $(FORMATS:%=src/%Converter.cc)
 SOURCES += $(BUSSES:%=src/%Interface.cc)
 SOURCES += $(wildcard src/Stream*.cc)
 
-## E3 Specific
+## E3 Specific source and header files
 SOURCES += $(APPSRC)/StreamVersion.c
+HEADERS += $(APPSRC)/StreamProtocol.h
+HEADERS += $(APPSRC)/StreamBusInterface.h
+HEADERS += $(APPSRC)/MacroMagic.h
+HEADERS += $(APPSRC)/StreamCore.h
 
-### GNUmakefile
+### GNUmakefile from the main stream PSI
 HEADERS += $(APPSRC)/devStream.h
 HEADERS += $(APPSRC)/StreamFormat.h
 HEADERS += $(APPSRC)/StreamFormatConverter.h
