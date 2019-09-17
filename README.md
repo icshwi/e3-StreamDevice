@@ -1,20 +1,13 @@
-# e3-StreamDevice
+e3-StreamDevice
+==
+
+ESS Site-specific EPICS module : stream
 
 
-The PSI StreamDevice, not epics-module/stream.
+## Dependency Plot
 
-* e3-pcre should be installed 
-* https://github.com/paulscherrerinstitute/StreamDevice
-
-
-## Commands
-
-ESS has its own patch files, one should use. Please use the following commands to setup it into E3.
+|![stream dep](docs/stream.png)|
+| :---: |
+|**Figure 1** Depdendency Tree. |
 
 
-```
-e3-StreamDevice (master)$ make init
-e3-StreamDevice (master)$ make patch
-e3-StreamDevice (master)$ make build
-e3-StreamDevice (master)$ make install
-```
