@@ -1,0 +1,11 @@
+digraph stream {
+node [shape=record];
+base [label="base 7.0.3"]
+require [label="require 3.1.1"]
+ASYN [label="ASYN 4.36.0"]
+CALC [label="CALC 3.7.3"]
+PCRE [label="PCRE 8.41.0"]
+stream [label="stream 2.8.10"]
+base -> require -> { ASYN,CALC,PCRE } ->  {  stream  } 
+} 
+
